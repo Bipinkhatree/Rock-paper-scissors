@@ -26,5 +26,53 @@ function getHumanChoice() {
     }
     return userChoice;
 }
-
 let humanChoice = getHumanChoice(); //CALL humanChoice to get user choice
+
+
+//Creating variables to store scores
+
+let compScore = 0;
+let userScore = 0;
+
+//IF-THEN-ELSE
+function playRound(compChoice, humanChoice) {
+
+
+    if (compChoice === humanChoice) {
+        drawGame(compChoice, humanChoice, compScore, userScore);
+    }
+    else if ((compChoice === 'rock' && humanChoice === 'scissor') || (compChoice === 'paper' && humanChoice === 'rock') || (compChoice === 'scissor' && humanChoice === 'paper')) {
+        compWin(compChoice, humanChoice, compScore, userScore);
+    }
+    else {
+        userWin(compChoice, humanChoice, compScore, userScore);
+    }
+
+}
+
+//result after drawGame
+function drawGame(compChoice, humanChoice, compScore, userScore) {
+    console.log(`It's a draw. Computer choose ${compChoice} and you choose ${humanChoice}`);
+    compScore++;
+    userScore++;
+    console.log(`your score: ${userScore} Computer score: ${compScore} `)
+
+}
+//Results after computer win
+function compWin(compChoice, humanChoice, compScore, userScore) {
+    console.log(`Computer Wins. Computer choose ${compChoice} and you choose ${humanChoice}`);
+    compScore++;
+    console.log(`your score: ${userScore} Computer score: ${compScore} `)
+}
+//Results after user win
+function userWin(compChoice, humanChoice, compScore, userScore) {
+    console.log(`You Win. Computer choose ${compChoice} and you choose ${humanChoice}`);
+    userScore++;
+    console.log(`your score: ${userScore} Computer score: ${compScore} `)
+}
+
+
+playRound(compChoice, humanChoice);
+
+
+// playGame();
